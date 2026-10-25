@@ -36,7 +36,7 @@
           load();
         } else if (d.badCode) {
           msg.textContent = '공통 코드가 맞지 않습니다. 코드가 바뀌었을 수 있어요. 공지된 새 코드를 넣어 주세요. 쓰신 소감은 그대로 있어요.';
-          codeI.value = ''; keep.checked = false;
+          codeI.value = '';
           try { localStorage.setItem('mcb-member', JSON.stringify({ name: payload.name, code: '' })); } catch (e) {}
           codeI.focus();
         } else { msg.textContent = d.error || '남기지 못했습니다.'; }
