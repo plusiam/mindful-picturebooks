@@ -1,0 +1,41 @@
+/* Two views and a native, keyboard-accessible image viewer. */
+.card-views{display:none;gap:8px;flex-wrap:wrap;margin:22px 0 12px}
+#cards.is-ready .card-views{display:flex}
+#cards button{font:inherit;cursor:pointer;color:var(--ink)}
+.card-views button,.gallery-controls button,.viewer-toolbar button,.viewer-controls button{min-height:44px;padding:8px 16px;border:1px solid var(--line);border-radius:999px;background:var(--card);font-size:15px;font-weight:700}
+#cards .card-views button{background:#fffdf8;color:#203a2c;border:2px solid #a8b7aa;box-shadow:none}
+#cards .card-views button[aria-pressed=true]{background:#e5eee2;color:#173723;border-color:#315e48;box-shadow:inset 0 -3px 0 #315e48}
+#cards .card-views button:hover{background:#edf3e9;color:#173723;border-color:#315e48}
+#cards .card-views button:focus-visible{outline:3px solid #8a5d33;outline-offset:3px}
+.card-gallery{max-width:440px;max-width:min(440px,54.4svh);margin:16px auto 0}
+.card-track{display:flex;overflow-x:auto;scroll-snap-type:x mandatory;overscroll-behavior-x:contain;scrollbar-width:thin;touch-action:pan-x pan-y pinch-zoom;border-radius:12px}
+.card-tile{display:block;flex:0 0 100%;min-width:0;width:100%;padding:0;border:1px solid var(--line);border-radius:12px;background:var(--card);overflow:hidden;text-decoration:none;color:var(--ink);scroll-snap-align:start;scroll-snap-stop:always}
+.card-tile img{display:block;width:100%;height:auto;aspect-ratio:4/5;object-fit:contain}
+.card-tile:hover{border-color:var(--accent)}
+.card-tile:focus-visible{outline:3px solid var(--accent);outline-offset:-4px}
+.gallery-controls{display:none;justify-content:space-between;align-items:center;gap:12px;margin-top:16px}
+#cards.is-ready .gallery-controls{display:flex}
+.gallery-controls button{min-width:88px}
+.gallery-controls button[aria-disabled="true"],.viewer-controls button[aria-disabled="true"]{opacity:.4;cursor:default}
+.gallery-count,.viewer-count{font-size:15px;font-weight:700;font-variant-numeric:tabular-nums;white-space:nowrap}
+.gallery-help{font-size:14px;color:var(--sub);margin:12px 0 0;text-align:center}
+.card-gallery[data-view=gallery]{max-width:100%}
+.card-gallery[data-view=gallery] .card-track{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:14px;overflow:visible;scroll-snap-type:none}
+.card-gallery[data-view=gallery] .gallery-controls{display:none!important}
+.card-viewer{width:min(1200px,calc(100% - 24px));height:calc(100vh - 24px);height:calc(100dvh - 24px);max-width:none;max-height:calc(100% - 24px);padding:16px;border:1px solid var(--line);border-radius:16px;background:var(--paper);color:var(--ink);box-sizing:border-box}
+.card-viewer[open]{display:flex;flex-direction:column;gap:12px}
+.card-viewer::backdrop{background:rgba(15,25,22,.86)}
+.viewer-toolbar{display:flex;align-items:center;justify-content:space-between;gap:8px;flex-wrap:wrap}
+.viewer-toolbar h3{font-size:16px;margin:0}
+.viewer-toolbar-actions{display:flex;gap:8px}
+.viewer-stage{flex:1;min-height:0;overflow:auto;display:flex;justify-content:center;align-items:center;overscroll-behavior:contain;touch-action:pan-x pan-y pinch-zoom}
+.viewer-stage img{display:block;max-width:100%;max-height:100%;width:auto;height:auto;object-fit:contain}
+.viewer-stage.is-zoomed{display:block}
+.viewer-stage.is-zoomed img{width:max(1080px,150%);max-width:none;max-height:none;height:auto;margin:0 auto}
+.viewer-controls{display:flex;justify-content:center;align-items:center;gap:20px}
+.viewer-help{font-size:13px;margin:0;text-align:center;color:var(--sub)}
+@media(max-width:720px){.card-gallery[data-view=gallery] .card-track{grid-template-columns:repeat(2,minmax(0,1fr));gap:10px}}
+@media(max-width:480px){.card-gallery{max-width:100%}.card-viewer{padding:10px;gap:8px}.viewer-toolbar h3{font-size:14px}.viewer-toolbar button{padding:8px 12px}.viewer-controls{gap:12px}}
+html{scrollbar-gutter:stable}
+@media(max-height:500px){.card-viewer[open]{padding:8px;gap:6px}.viewer-help{display:none}.viewer-toolbar h3{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0)}}
+@media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}}

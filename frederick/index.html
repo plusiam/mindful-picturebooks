@@ -23,45 +23,7 @@ footer{padding:40px 0 60px;border-top:1px solid var(--line);font-size:14px;color
 .flow{display:grid;grid-template-columns:repeat(4,1fr);gap:12px;margin-top:18px}.flow div{background:var(--card);border:1px solid var(--line);border-radius:12px;padding:16px}.flow b{display:block;color:var(--accent);font-size:13px;margin-bottom:4px}
 @media (max-width:720px){.flow{grid-template-columns:1fr 1fr}.pager{grid-template-columns:1fr}.pager .next{text-align:left}}#voices .v-list{list-style:none;padding:0;margin:20px 0 0;display:grid;gap:12px}#voices .v-list li{background:var(--card);border:1px solid var(--line);border-radius:12px;padding:16px 18px}#voices .v-meta{display:flex;gap:10px;align-items:baseline;font-size:14px;color:var(--sub);margin-bottom:6px}#voices .v-meta b{color:var(--ink);font-size:16px}#voices .v-list p{margin:0;white-space:pre-wrap}#voices .v-empty{color:var(--sub)}
 #voices form{display:grid;gap:12px;margin-top:4px}#voices label{display:grid;gap:6px;font-size:15px;font-weight:600}#voices input[type=text],#voices input[type=password],#voices textarea{font:inherit;font-weight:400;padding:10px 12px;border:1px solid var(--line);border-radius:10px;background:#fff;color:var(--ink)}#voices textarea{min-height:140px;resize:vertical}#voices .row{display:flex;gap:12px;flex-wrap:wrap;align-items:center;justify-content:space-between}#voices .keep{display:flex;gap:6px;align-items:center;font-weight:400;font-size:14px;color:var(--sub)}#voices button{font:inherit;font-weight:700;background:var(--ink);color:var(--paper);border:0;border-radius:999px;padding:10px 22px;cursor:pointer}#voices button[aria-disabled="true"]{opacity:.5}#voices .v-msg{font-size:15px;color:var(--accent);min-height:1.5em;margin:0}.v-count{font-size:13px;color:var(--sub);font-weight:400}a:focus-visible,button:focus-visible,summary:focus-visible,input:focus-visible,textarea:focus-visible{outline:3px solid var(--accent);outline-offset:3px}
-/* Two views and a native, keyboard-accessible image viewer. */
-.card-views{display:none;gap:8px;flex-wrap:wrap;margin:22px 0 12px}
-#cards.is-ready .card-views{display:flex}
-#cards button{font:inherit;cursor:pointer;color:var(--ink)}
-.card-views button,.gallery-controls button,.viewer-toolbar button,.viewer-controls button{min-height:44px;padding:8px 16px;border:1px solid var(--line);border-radius:999px;background:var(--card);font-size:15px;font-weight:700}
-#cards .card-views button[aria-pressed=true]{background:var(--ink);color:var(--paper);border-color:var(--ink)}
-.card-gallery{max-width:440px;max-width:min(440px,54.4svh);margin:16px auto 0}
-.card-track{display:flex;overflow-x:auto;scroll-snap-type:x mandatory;overscroll-behavior-x:contain;scrollbar-width:thin;touch-action:pan-x pan-y pinch-zoom;border-radius:12px}
-.card-tile{display:block;flex:0 0 100%;min-width:0;width:100%;padding:0;border:1px solid var(--line);border-radius:12px;background:var(--card);overflow:hidden;text-decoration:none;color:var(--ink);scroll-snap-align:start;scroll-snap-stop:always}
-.card-tile img{display:block;width:100%;height:auto;aspect-ratio:4/5;object-fit:contain}
-.card-tile:hover{border-color:var(--accent)}
-.card-tile:focus-visible{outline:3px solid var(--accent);outline-offset:-4px}
-.gallery-controls{display:none;justify-content:space-between;align-items:center;gap:12px;margin-top:16px}
-#cards.is-ready .gallery-controls{display:flex}
-.gallery-controls button{min-width:88px}
-.gallery-controls button[aria-disabled="true"],.viewer-controls button[aria-disabled="true"]{opacity:.4;cursor:default}
-.gallery-count,.viewer-count{font-size:15px;font-weight:700;font-variant-numeric:tabular-nums;white-space:nowrap}
-.gallery-help{font-size:14px;color:var(--sub);margin:12px 0 0;text-align:center}
-.card-gallery[data-view=gallery]{max-width:100%}
-.card-gallery[data-view=gallery] .card-track{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:14px;overflow:visible;scroll-snap-type:none}
-.card-gallery[data-view=gallery] .gallery-controls{display:none!important}
-.card-viewer{width:min(1200px,calc(100% - 24px));height:calc(100vh - 24px);height:calc(100dvh - 24px);max-width:none;max-height:calc(100% - 24px);padding:16px;border:1px solid var(--line);border-radius:16px;background:var(--paper);color:var(--ink);box-sizing:border-box}
-.card-viewer[open]{display:flex;flex-direction:column;gap:12px}
-.card-viewer::backdrop{background:rgba(15,25,22,.86)}
-.viewer-toolbar{display:flex;align-items:center;justify-content:space-between;gap:8px;flex-wrap:wrap}
-.viewer-toolbar h3{font-size:16px;margin:0}
-.viewer-toolbar-actions{display:flex;gap:8px}
-.viewer-stage{flex:1;min-height:0;overflow:auto;display:flex;justify-content:center;align-items:center;overscroll-behavior:contain;touch-action:pan-x pan-y pinch-zoom}
-.viewer-stage img{display:block;max-width:100%;max-height:100%;width:auto;height:auto;object-fit:contain}
-.viewer-stage.is-zoomed{display:block}
-.viewer-stage.is-zoomed img{width:max(1080px,150%);max-width:none;max-height:none;height:auto;margin:0 auto}
-.viewer-controls{display:flex;justify-content:center;align-items:center;gap:20px}
-.viewer-help{font-size:13px;margin:0;text-align:center;color:var(--sub)}
-@media(max-width:720px){.card-gallery[data-view=gallery] .card-track{grid-template-columns:repeat(2,minmax(0,1fr));gap:10px}}
-@media(max-width:480px){.card-gallery{max-width:100%}.card-viewer{padding:10px;gap:8px}.viewer-toolbar h3{font-size:14px}.viewer-toolbar button{padding:8px 12px}.viewer-controls{gap:12px}}
-html{scrollbar-gutter:stable}
-@media(max-height:500px){.card-viewer[open]{padding:8px;gap:6px}.viewer-help{display:none}.viewer-toolbar h3{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0)}}
-@media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}}
-</style></head><body>
+</style><link rel="stylesheet" href="../card-gallery.css?v=20261026c"></head><body>
 <div class="wrap"><nav class="sitebar" aria-label="사이트 메뉴"><a class="home" href="../index.html">마음 챙김 독서 토론회 · 그림책 여섯 권</a><span class="shelf"><a href="../frederick/index.html" class="on" aria-current="page">여는 책 프레드릭</a><a href="../rumphius/index.html">4월 미스 럼피우스</a><a href="../river/index.html">5월 나는 강물처럼 말해요</a><a href="../ganajittong/index.html">8월 강아지똥</a><a href="../cat/index.html">10월 100만 번 산 고양이</a><a href="../swimmy/index.html">12월 헤엄이</a></span></nav></div>
 <div class="wrap"><div class="hero"><div><div class="eyebrow">여는 책 · 그림책으로 나누는 마음 챙김</div><h1>모두가 바쁠 때,<br>나는 무엇을 모을까?</h1><p class="lead">『프레드릭』을 함께 읽고, 바쁜 일상 속에서 나를 채우는 햇살과 색깔과 이야기를 돌아봅니다.</p>
 <dl class="biblio"><dt>책</dt><dd>『프레드릭』</dd><dt>지은이</dt><dd>레오 리오니 글·그림</dd><dt>옮김</dt><dd>최순희</dd><dt>펴낸 곳</dt><dd>시공주니어, 1999 (원작 1967)</dd></dl>
@@ -258,35 +220,4 @@ html{scrollbar-gutter:stable}
 <dialog class="card-viewer" aria-labelledby="viewer-title"><div class="viewer-toolbar"><h3 id="viewer-title">『프레드릭』 카드 크게 보기</h3><div class="viewer-toolbar-actions"><button type="button" class="viewer-zoom" aria-pressed="false">더 크게</button><button type="button" class="viewer-close" aria-label="확대 보기 닫기">닫기 ×</button></div></div><div class="viewer-stage" role="group" tabindex="0" aria-label="확대 카드 이미지"><img alt=""></div><div class="viewer-controls"><button type="button" class="viewer-prev" aria-label="확대 보기 이전 카드">← 이전</button><span class="viewer-count" role="status" aria-live="polite" aria-atomic="true"></span><button type="button" class="viewer-next" aria-label="확대 보기 다음 카드">다음 →</button></div><p class="viewer-help">← → 키로 넘기기 · Esc로 닫기 · 길게 누르거나 오른쪽 버튼으로 이미지 저장</p></dialog>
 </div></section>
 <div class="wrap"><nav class="pager" aria-label="이전·다음 책"><span></span><a class="next" href="../rumphius/index.html"><small>다음 책 · 4월</small>『미스 럼피우스』</a></nav></div>
-<footer><div class="wrap"><p><b>마음 챙김 독서 토론회</b> · 2026 교직원 독서토론 동아리 그림책 나눔 자료</p><p>도서: 레오 리오니 글·그림 · 최순희 옮김 · 시공주니어, 1999.</p><p>줄거리 참고: <a href="https://product.kyobobook.co.kr/detail/S000000727938">교보문고 『프레드릭』 책 소개(시공주니어, 1999)</a>, <a href="https://product.kyobobook.co.kr/detail/S000000735159">교보문고 『프레드릭』 한국어판 20주년 특별 에디션 책 소개</a>, <a href="http://gaonbit.kr/prize/caldecott-books/10711">가온빛 「칼데콧상 수상작: 프레드릭」(1968)</a>. 따옴표 속 문장은 출판사 책 소개와 서평에 실린 한국어판 문장을 짧게 옮긴 것입니다.</p><p>삽화는 이 자료를 위해 새로 그린 것으로, 원작 그림책의 그림이 아닙니다.</p></div></footer><script src="../comments.js" defer></script><script>
-(()=>{
- const section=document.querySelector('#cards'),gallery=section.querySelector('.card-gallery'),track=gallery.querySelector('.card-track');
- const tiles=Array.from(track.querySelectorAll('.card-tile')),slides=tiles.map(tile=>tile.querySelector('img'));
- const prev=gallery.querySelector('.gallery-prev'),next=gallery.querySelector('.gallery-next'),count=gallery.querySelector('.gallery-count');
- const viewButtons=Array.from(section.querySelectorAll('.card-views button')),help=gallery.querySelector('.gallery-help');
- const dialog=section.querySelector('.card-viewer'),stage=dialog.querySelector('.viewer-stage'),image=stage.querySelector('img');
- const viewerPrev=dialog.querySelector('.viewer-prev'),viewerNext=dialog.querySelector('.viewer-next'),viewerCount=dialog.querySelector('.viewer-count'),zoom=dialog.querySelector('.viewer-zoom');
- const reduced=window.matchMedia('(prefers-reduced-motion: reduce)');
- let current=0,target=null,view='single',frame=0,opened=0,opener=null,oldOverflow='';
- const clamp=i=>Math.max(0,Math.min(slides.length-1,i));
- const update=()=>{frame=0;if(view!=='single'||!track.clientWidth)return;current=clamp(Math.round(track.scrollLeft/track.clientWidth));const label=(current+1)+' / '+slides.length;if(count.textContent!==label)count.textContent=label;prev.setAttribute('aria-disabled',String(current===0));next.setAttribute('aria-disabled',String(current===slides.length-1));tiles.forEach((tile,i)=>tile.tabIndex=i===current?0:-1);};
- const go=i=>{target=clamp(i);if(tiles.includes(document.activeElement))tiles[target].focus({preventScroll:true});track.scrollTo({left:target*track.clientWidth,behavior:reduced.matches?'auto':'smooth'});};
- const setView=mode=>{view=mode;target=null;gallery.dataset.view=mode;tiles.forEach((tile,i)=>tile.tabIndex=mode==='gallery'||i===current?0:-1);viewButtons.forEach(b=>b.setAttribute('aria-pressed',String(b.dataset.view===mode)));track.setAttribute('aria-label',mode==='single'?'카드 이미지, 좌우 방향키로 넘기기':'카드 이미지 전체 갤러리');help.textContent=mode==='single'?'좌우로 넘기거나 이전·다음 버튼을 눌러 보세요. 카드를 누르면 크게 볼 수 있어요.':'아래로 내려 6장을 이어서 살펴보세요. 원하는 카드를 누르면 크게 볼 수 있어요.';if(mode==='single'){track.scrollTo({left:current*track.clientWidth,behavior:'auto'});update();}};
- viewButtons.forEach(b=>b.addEventListener('click',()=>setView(b.dataset.view)));
- prev.addEventListener('click',()=>{if(prev.getAttribute('aria-disabled')!=='true')go((target??current)-1);});next.addEventListener('click',()=>{if(next.getAttribute('aria-disabled')!=='true')go((target??current)+1);});
- track.addEventListener('scrollend',()=>{target=null;});track.addEventListener('pointerdown',()=>{target=null;},{passive:true});
- track.addEventListener('scroll',()=>{if(!frame)frame=requestAnimationFrame(update);},{passive:true});
- track.addEventListener('keydown',event=>{if(event.altKey||event.metaKey||event.ctrlKey||view!=='single'||!['ArrowLeft','ArrowRight','Home','End'].includes(event.key))return;event.preventDefault();go(event.key==='Home'?0:event.key==='End'?slides.length-1:(target??current)+(event.key==='ArrowRight'?1:-1));});
- new ResizeObserver(()=>{if(view==='single')track.scrollTo({left:current*track.clientWidth,behavior:'auto'});}).observe(track);
- const resetZoom=()=>{stage.classList.remove('is-zoomed');zoom.textContent='더 크게';zoom.setAttribute('aria-pressed','false');stage.scrollTo(0,0);};
- const show=i=>{opened=clamp(i);image.src=slides[opened].src;image.alt=slides[opened].alt;viewerCount.textContent=(opened+1)+' / '+slides.length;viewerPrev.setAttribute('aria-disabled',String(opened===0));viewerNext.setAttribute('aria-disabled',String(opened===slides.length-1));resetZoom();};
- tiles.forEach((tile,i)=>tile.addEventListener('click',event=>{event.preventDefault();opener=tile;show(i);oldOverflow=document.body.style.overflow;dialog.showModal();document.body.style.overflow='hidden';dialog.querySelector('.viewer-close').focus();}));
- viewerPrev.addEventListener('click',()=>{if(opened>0)show(opened-1);});viewerNext.addEventListener('click',()=>{if(opened<slides.length-1)show(opened+1);});
- zoom.addEventListener('click',()=>{const enlarged=stage.classList.toggle('is-zoomed');zoom.textContent=enlarged?'화면에 맞춤':'더 크게';zoom.setAttribute('aria-pressed',String(enlarged));stage.scrollTo(enlarged?(stage.scrollWidth-stage.clientWidth)/2:0,0);if(enlarged)stage.focus({preventScroll:true});});
- dialog.querySelector('.viewer-close').addEventListener('click',()=>dialog.close());
- dialog.addEventListener('click',event=>{if(event.target!==dialog)return;const r=dialog.getBoundingClientRect();if(event.clientX<r.left||event.clientX>r.right||event.clientY<r.top||event.clientY>r.bottom)dialog.close();});
- dialog.addEventListener('keydown',event=>{if(event.altKey||event.metaKey||event.ctrlKey||!['ArrowLeft','ArrowRight'].includes(event.key)||stage.classList.contains('is-zoomed'))return;event.preventDefault();show(opened+(event.key==='ArrowRight'?1:-1));});
- dialog.addEventListener('close',()=>{document.body.style.overflow=oldOverflow;resetZoom();if(view==='single'){current=opened;track.scrollTo({left:current*track.clientWidth,behavior:'auto'});update();opener=tiles[current];}opener?.focus({preventScroll:true});});
- section.classList.add('is-ready');update();
-})();
-</script></body></html>
+<footer><div class="wrap"><p><b>마음 챙김 독서 토론회</b> · 2026 교직원 독서토론 동아리 그림책 나눔 자료</p><p>도서: 레오 리오니 글·그림 · 최순희 옮김 · 시공주니어, 1999.</p><p>줄거리 참고: <a href="https://product.kyobobook.co.kr/detail/S000000727938">교보문고 『프레드릭』 책 소개(시공주니어, 1999)</a>, <a href="https://product.kyobobook.co.kr/detail/S000000735159">교보문고 『프레드릭』 한국어판 20주년 특별 에디션 책 소개</a>, <a href="http://gaonbit.kr/prize/caldecott-books/10711">가온빛 「칼데콧상 수상작: 프레드릭」(1968)</a>. 따옴표 속 문장은 출판사 책 소개와 서평에 실린 한국어판 문장을 짧게 옮긴 것입니다.</p><p>삽화는 이 자료를 위해 새로 그린 것으로, 원작 그림책의 그림이 아닙니다.</p></div></footer><script src="../comments.js" defer></script><script src="../card-gallery.js?v=20261026c" defer></script></body></html>
