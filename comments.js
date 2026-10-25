@@ -1,4 +1,4 @@
-// 마음 챙김 독서 토론회 · 회원 소감 (구글 시트 저장)
+// 마음 챙김 독서 토론회 · 회원 소감 (구글 시트 저장, 공통 코드 + 별명)
 (function(){
   var ENDPOINT = 'https://script.google.com/macros/s/AKfycbzWwJYICsZkb6UTc6OVny00Sf4_RxNjC0Astda6Hhi-p2gMJ7pCqbekZGgUFhDzTKmYoA/exec';
   var box = document.getElementById('voices'); if (!box) return;
@@ -24,8 +24,8 @@
   form.addEventListener('submit', function(ev){
     ev.preventDefault();
     var payload = { book: book, name: nameI.value.trim(), text: textI.value.trim(), code: codeI.value.trim() };
-    if (!payload.name || !payload.text) { msg.textContent = '이름과 소감을 적어 주세요.'; return; }
-    if (!payload.code) { msg.textContent = '회원 코드를 적어 주세요.'; return; }
+    if (!payload.name || !payload.text) { msg.textContent = '별명과 소감을 적어 주세요.'; return; }
+    if (!payload.code) { msg.textContent = '공통 코드를 적어 주세요.'; return; }
     btn.disabled = true; msg.textContent = '남기는 중…';
     fetch(ENDPOINT, { method: 'POST', headers: { 'Content-Type': 'text/plain;charset=utf-8' }, body: JSON.stringify(payload) })
       .then(function(r){ return r.json(); })
@@ -34,6 +34,11 @@
           msg.textContent = '소감을 남겼습니다. 고맙습니다.'; textI.value = ''; cnt.textContent = '0 / 1000';
           try { localStorage.setItem('mcb-member', JSON.stringify({ name: payload.name, code: keep.checked ? payload.code : '' })); } catch (e) {}
           load();
+        } else if (d.badCode) {
+          msg.textContent = '공통 코드가 맞지 않습니다. 코드가 바뀌었을 수 있어요. 공지된 새 코드를 넣어 주세요. 쓰신 소감은 그대로 있어요.';
+          codeI.value = ''; keep.checked = false;
+          try { localStorage.setItem('mcb-member', JSON.stringify({ name: payload.name, code: '' })); } catch (e) {}
+          codeI.focus();
         } else { msg.textContent = d.error || '남기지 못했습니다.'; }
       })
       .catch(function(){ msg.textContent = '연결이 원활하지 않습니다. 잠시 뒤 다시 시도해 주세요.'; })

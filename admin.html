@@ -1,53 +1,49 @@
-<!doctype html><html lang="ko"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta name="robots" content="noindex,nofollow"><title>회원 코드 관리 | 마음 챙김 독서 토론회</title>
+<!doctype html><html lang="ko"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta name="robots" content="noindex,nofollow"><title>관리자 | 마음 챙김 독서 토론회</title>
 <style>:root{--paper:#f6f2ea;--ink:#263e37;--sub:#5b6b63;--accent:#9a6a3c;--line:#d6d6c8;--card:#fffdf8;--danger:#a4483a}*{box-sizing:border-box}body{margin:0;background:var(--paper);color:var(--ink);font:16px/1.7 "Pretendard","Apple SD Gothic Neo","Noto Sans KR","Malgun Gothic",sans-serif;word-break:keep-all}
 .wrap{max-width:760px;margin:0 auto;padding:0 20px 60px}header{padding:18px 0;border-bottom:1px solid var(--line);display:flex;justify-content:space-between;gap:10px;flex-wrap:wrap;font-size:14px}header a{color:var(--ink);text-decoration:none;font-weight:700}
 h1{font-size:30px;letter-spacing:-.03em;margin:34px 0 6px}h2{font-size:20px;margin:0 0 12px}.note{color:var(--sub);font-size:14px}.box{background:var(--card);border:1px solid var(--line);border-radius:14px;padding:20px;margin-top:20px}
 input{font:inherit;padding:10px 12px;border:1px solid var(--line);border-radius:10px;background:#fff;color:var(--ink);min-width:0}button{font:inherit;font-weight:700;border-radius:999px;padding:9px 18px;cursor:pointer;border:1px solid var(--ink);background:var(--ink);color:var(--paper)}button.ghost{background:transparent;color:var(--ink)}button.danger{background:transparent;color:var(--danger);border-color:var(--danger)}button:disabled{opacity:.5;cursor:default}
-.row{display:flex;gap:10px;flex-wrap:wrap;align-items:center}.row input{flex:1}table{width:100%;border-collapse:collapse;font-size:15px}th,td{text-align:left;padding:10px 6px;border-bottom:1px solid var(--line);vertical-align:middle}th{font-size:13px;color:var(--sub);font-weight:600}code{font-size:17px;font-weight:700;letter-spacing:.06em}td.act{text-align:right;white-space:nowrap}td.act button{padding:5px 12px;font-size:13px;margin-left:4px}
-.msg{min-height:1.6em;color:var(--accent);margin:10px 0 0}.new{display:none;margin-top:14px;padding:14px 16px;border:1px dashed var(--accent);border-radius:12px;background:#fff}.new code{font-size:22px}.tag{font-size:12px;color:var(--sub);border:1px solid var(--line);border-radius:999px;padding:1px 8px;margin-left:6px}
-@media (max-width:560px){th:nth-child(3),td:nth-child(3){display:none}td.act button{display:block;margin:4px 0 0 auto}}</style></head><body><div class="wrap">
+.row{display:flex;gap:10px;flex-wrap:wrap;align-items:center}.row input{flex:1}.cur{font-size:22px;font-weight:700;letter-spacing:.02em}.msg{min-height:1.6em;color:var(--accent);margin:10px 0 0}
+.post{border-top:1px solid var(--line);padding:12px 0;display:grid;grid-template-columns:1fr auto;gap:10px;align-items:start}.post:first-child{border-top:0}.post .meta{font-size:13px;color:var(--sub)}.post .meta b{color:var(--ink);font-size:15px;margin-right:6px}.post p{margin:4px 0 0;white-space:pre-wrap;font-size:15px}.post.hid{opacity:.55}.post.hid .meta::after{content:" · 숨김";color:var(--danger);font-weight:700}.post button{padding:5px 12px;font-size:13px}</style></head><body><div class="wrap">
 <header><a href="./index.html">마음 챙김 독서 토론회 · 그림책 여섯 권</a><span class="note">관리자 전용</span></header>
-<h1>회원 코드 관리</h1><p class="note">회원마다 소감을 남길 때 쓰는 코드를 만들고 지웁니다. 코드를 지우면 그 코드로는 더 이상 소감을 남길 수 없고, 이미 남긴 소감은 그대로 남습니다.</p>
+<h1>관리자</h1><p class="note">공통 코드를 바꾸고, 회원 소감을 숨기거나 다시 보이게 합니다. 완전히 지우려면 소감 구글 시트에서 해당 줄을 지워 주세요.</p>
 <section class="box" id="login"><h2>관리자 확인</h2><form class="row" id="loginForm"><input type="password" id="pw" placeholder="관리자 비밀번호" autocomplete="current-password"><button type="submit">들어가기</button></form><p class="msg" id="loginMsg" role="status"></p><p class="note">관리자 비밀번호는 소감 구글 시트의 「설정」 탭 B2 칸에 있습니다.</p></section>
 <div id="panel" hidden>
-<section class="box"><h2>새 회원 코드 만들기</h2><form class="row" id="createForm"><input type="text" id="newName" maxlength="20" placeholder="회원 이름 (예: 김애자 선생님)"><button type="submit">코드 만들기</button></form>
-<div class="new" id="newBox"><div><span id="newWho"></span>의 코드: <code id="newCode"></code></div><div class="row" style="margin-top:10px"><button class="ghost" type="button" id="copyCode">코드 복사</button><button class="ghost" type="button" id="copyMsg">안내 문구 복사</button></div><p class="note" style="margin:8px 0 0">안내 문구에는 사이트 주소와 코드가 함께 들어갑니다. 밴드나 메시지로 그대로 보내면 됩니다.</p></div></section>
-<section class="box"><div class="row" style="justify-content:space-between"><h2 style="margin:0">회원 코드 목록</h2><span class="row"><button class="ghost" type="button" id="reload">새로고침</button><button class="ghost" type="button" id="logout">나가기</button></span></div>
-<table><thead><tr><th>이름</th><th>코드</th><th>만든 날</th><th>소감</th><th></th></tr></thead><tbody id="list"><tr><td colspan="5" class="note">불러오는 중…</td></tr></tbody></table><p class="msg" id="msg" role="status"></p></section></div>
+<section class="box"><h2>공통 코드</h2><div>지금 코드: <span class="cur" id="cur"></span></div>
+<form class="row" id="codeForm" style="margin-top:12px"><input type="text" id="newCode" maxlength="30" placeholder="새 공통 코드 (예: 마음그림책)"><button type="submit">바꾸기</button></form>
+<div class="row" style="margin-top:10px"><button class="ghost" type="button" id="copyMsg">공지 문구 복사</button></div>
+<p class="note" style="margin:8px 0 0">코드를 바꾸면 예전 코드로는 소감을 남길 수 없습니다. 이미 남긴 소감은 그대로입니다. 틀린 코드가 10분 안에 10번 들어오면 10분 동안 입력이 멈추는데, 여기서 코드를 다시 저장하면 바로 풀립니다.</p><p class="msg" id="codeMsg" role="status"></p></section>
+<section class="box"><div class="row" style="justify-content:space-between"><h2 style="margin:0">최근 소감</h2><span class="row"><button class="ghost" type="button" id="reload">새로고침</button><button class="ghost" type="button" id="logout">나가기</button></span></div>
+<div id="posts" style="margin-top:8px"><p class="note">불러오는 중…</p></div><p class="msg" id="msg" role="status"></p></section></div>
 </div>
 <script>
 (function(){
   var ENDPOINT='https://script.google.com/macros/s/AKfycbzWwJYICsZkb6UTc6OVny00Sf4_RxNjC0Astda6Hhi-p2gMJ7pCqbekZGgUFhDzTKmYoA/exec', SITE='https://plusiam.github.io/mindful-picturebooks/';
+  var TITLES={"frederick":"『프레드릭』","rumphius":"『미스 럼피우스』","river":"『나는 강물처럼 말해요』","ganajittong":"『강아지똥』","cat":"『100만 번 산 고양이』","swimmy":"『헤엄이』"};
   var pw=sessionStorage.getItem('mcb-admin')||'';
   var $=function(id){return document.getElementById(id)};
   function call(o){o.admin=pw;return fetch(ENDPOINT,{method:'POST',headers:{'Content-Type':'text/plain;charset=utf-8'},body:JSON.stringify(o)}).then(function(r){return r.json()});}
   function copy(t,btn){(navigator.clipboard?navigator.clipboard.writeText(t):Promise.reject()).then(function(){var o=btn.textContent;btn.textContent='복사됨';setTimeout(function(){btn.textContent=o},1500)}).catch(function(){prompt('아래 내용을 복사하세요.',t)});}
-  function render(items){
-    var tb=$('list');tb.innerHTML='';
-    if(!items.length){tb.innerHTML='<tr><td colspan="5" class="note">만든 회원 코드가 없습니다.</td></tr>';return;}
-    items.forEach(function(it){
-      var tr=document.createElement('tr');
-      var n=document.createElement('td');n.textContent=it.name;if(it.shared){var s=document.createElement('span');s.className='tag';s.textContent='모두 함께 쓰는 코드';n.appendChild(s);}
-      var c=document.createElement('td');var cc=document.createElement('code');cc.textContent=it.code;c.appendChild(cc);
-      var d=document.createElement('td');d.textContent=it.date||'-';
-      var p=document.createElement('td');p.textContent=(it.posts||0)+'개';
-      var a=document.createElement('td');a.className='act';
-      var b1=document.createElement('button');b1.type='button';b1.className='ghost';b1.textContent='복사';b1.onclick=function(){copy(it.code,b1)};
-      var b2=document.createElement('button');b2.type='button';b2.className='danger';b2.textContent='삭제';
-      b2.onclick=function(){if(!confirm('「'+it.name+'」의 코드 '+it.code+'를 지울까요?\n지우면 이 코드로는 소감을 남길 수 없습니다. 이미 남긴 소감은 그대로 남습니다.'))return;b2.disabled=true;$('msg').textContent='지우는 중…';
-        call({action:'admin_delete',code:it.code}).then(function(r){if(r.ok){$('msg').textContent='「'+it.name+'」의 코드를 지웠습니다.';render(r.items)}else{$('msg').textContent=(r.error||'지우지 못했습니다.')+' 새로고침 뒤 다시 시도해 주세요.';b2.disabled=false}}).catch(function(){$('msg').textContent='연결이 원활하지 않습니다. 다시 시도해 주세요.';b2.disabled=false});};
-      a.appendChild(b1);a.appendChild(b2);
-      [n,c,d,p,a].forEach(function(x){tr.appendChild(x)});tb.appendChild(tr);
+  function renderPosts(list){
+    var box=$('posts');box.innerHTML='';
+    if(!list.length){box.innerHTML='<p class="note">아직 남긴 소감이 없습니다.</p>';return;}
+    list.forEach(function(p){
+      var d=document.createElement('div');d.className='post'+(p.hidden?' hid':'');
+      var l=document.createElement('div');var m=document.createElement('div');m.className='meta';var b=document.createElement('b');b.textContent=p.name;m.appendChild(b);m.appendChild(document.createTextNode((TITLES[p.book]||p.book)+' · '+p.date));
+      var t=document.createElement('p');t.textContent=p.text;l.appendChild(m);l.appendChild(t);
+      var btn=document.createElement('button');btn.type='button';btn.className=p.hidden?'ghost':'danger';btn.textContent=p.hidden?'다시 보이기':'숨기기';
+      btn.onclick=function(){btn.disabled=true;$('msg').textContent='바꾸는 중…';call({action:'admin_hide',row:p.row,ts:p.ts,hidden:!p.hidden}).then(function(r){if(r.ok){$('msg').textContent=p.hidden?'다시 보이게 했습니다.':'숨겼습니다. 사이트에서 보이지 않습니다.';renderPosts(r.posts)}else{$('msg').textContent=r.error||'바꾸지 못했습니다.';btn.disabled=false}}).catch(function(){$('msg').textContent='연결이 원활하지 않습니다. 다시 시도해 주세요.';btn.disabled=false});};
+      d.appendChild(l);d.appendChild(btn);box.appendChild(d);
     });
   }
-  function load(){$('msg').textContent='';return call({action:'admin_list'}).then(function(r){if(r.ok){render(r.items);return true}return Promise.reject(r.error)});}
+  function load(){$('msg').textContent='';return call({action:'admin_state'}).then(function(r){if(r.ok){$('cur').textContent=r.code||'(비어 있음)';renderPosts(r.posts);return true}return Promise.reject(r.error)});}
   function enter(){$('loginMsg').textContent='확인하는 중…';load().then(function(){sessionStorage.setItem('mcb-admin',pw);$('login').hidden=true;$('panel').hidden=false}).catch(function(e){$('loginMsg').textContent=typeof e==='string'?e:'연결이 원활하지 않습니다.';sessionStorage.removeItem('mcb-admin')});}
   $('loginForm').onsubmit=function(ev){ev.preventDefault();pw=$('pw').value.trim();if(!pw){$('loginMsg').textContent='관리자 비밀번호를 적어 주세요.';return}enter();};
-  $('createForm').onsubmit=function(ev){ev.preventDefault();var name=$('newName').value.trim();if(!name){$('msg').textContent='회원 이름을 적어 주세요.';return}
-    var btn=ev.target.querySelector('button');btn.disabled=true;
-    call({action:'admin_create',name:name}).then(function(r){if(r.ok){$('newWho').textContent=r.created.name;$('newCode').textContent=r.created.code;$('newBox').style.display='block';$('newName').value='';render(r.items)}else{$('msg').textContent=r.error||'만들지 못했습니다.'}}).catch(function(){$('msg').textContent='연결이 원활하지 않습니다.'}).then(function(){btn.disabled=false});};
-  $('copyCode').onclick=function(){copy($('newCode').textContent,this)};
-  $('copyMsg').onclick=function(){copy('[마음 챙김 독서 토론회] '+$('newWho').textContent+'의 회원 코드입니다.\n사이트: '+SITE+'\n회원 코드: '+$('newCode').textContent+'\n책 페이지 아래 「회원 소감」에서 소감을 남길 때 써 주세요.',this)};
+  $('codeForm').onsubmit=function(ev){ev.preventDefault();var c=$('newCode').value.trim();if(!c){$('codeMsg').textContent='새 공통 코드를 적어 주세요.';return}
+    if(!confirm('공통 코드를 「'+c+'」(으)로 바꿀까요?\n바꾼 뒤에는 회원들께 새 코드를 알려 주셔야 합니다.'))return;
+    var btn=ev.target.querySelector('button');btn.disabled=true;$('codeMsg').textContent='바꾸는 중…';
+    call({action:'admin_set_code',code:c}).then(function(r){if(r.ok){$('cur').textContent=r.code;$('newCode').value='';$('codeMsg').textContent='공통 코드를 바꿨습니다. 공지 문구를 복사해 회원들께 알려 주세요.'}else{$('codeMsg').textContent=r.error||'바꾸지 못했습니다.'}}).catch(function(){$('codeMsg').textContent='연결이 원활하지 않습니다.'}).then(function(){btn.disabled=false});};
+  $('copyMsg').onclick=function(){copy('[마음 챙김 독서 토론회] 소감 남기기 공통 코드 안내\n사이트: '+SITE+'\n공통 코드: '+$('cur').textContent+'\n책 페이지 아래 「회원 소감」에서 별명과 함께 써 주세요.',this)};
   $('reload').onclick=function(){load().catch(function(e){$('msg').textContent=typeof e==='string'?e:'불러오지 못했습니다.'})};
   $('logout').onclick=function(){sessionStorage.removeItem('mcb-admin');pw='';$('panel').hidden=true;$('login').hidden=false;$('pw').value='';$('loginMsg').textContent=''};
   if(pw)enter();
