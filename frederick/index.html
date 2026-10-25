@@ -22,7 +22,21 @@ footer{padding:40px 0 60px;border-top:1px solid var(--line);font-size:14px;color
 .grid6{display:grid;grid-template-columns:repeat(auto-fill,minmax(250px,1fr));gap:18px;margin-top:22px}.bk{display:flex;flex-direction:column;background:var(--card);border:1px solid var(--line);border-radius:16px;overflow:hidden;text-decoration:none;color:var(--ink)}.bk .thumb svg{display:block;width:100%;height:200px}.bk .in{padding:16px 18px 18px}.chip{display:inline-block;font-size:12px;font-weight:700;color:var(--accent);letter-spacing:.04em}.bk h3{margin:6px 0 6px;font-size:21px}.bk p{margin:0;color:var(--sub);font-size:15px;line-height:1.6}.bk .go{margin-top:12px;font-size:14px;font-weight:700}
 .flow{display:grid;grid-template-columns:repeat(4,1fr);gap:12px;margin-top:18px}.flow div{background:var(--card);border:1px solid var(--line);border-radius:12px;padding:16px}.flow b{display:block;color:var(--accent);font-size:13px;margin-bottom:4px}
 @media (max-width:720px){.flow{grid-template-columns:1fr 1fr}.pager{grid-template-columns:1fr}.pager .next{text-align:left}}#voices .v-list{list-style:none;padding:0;margin:20px 0 0;display:grid;gap:12px}#voices .v-list li{background:var(--card);border:1px solid var(--line);border-radius:12px;padding:16px 18px}#voices .v-meta{display:flex;gap:10px;align-items:baseline;font-size:14px;color:var(--sub);margin-bottom:6px}#voices .v-meta b{color:var(--ink);font-size:16px}#voices .v-list p{margin:0;white-space:pre-wrap}#voices .v-empty{color:var(--sub)}
-#voices form{display:grid;gap:12px;margin-top:4px}#voices label{display:grid;gap:6px;font-size:15px;font-weight:600}#voices input[type=text],#voices input[type=password],#voices textarea{font:inherit;font-weight:400;padding:10px 12px;border:1px solid var(--line);border-radius:10px;background:#fff;color:var(--ink)}#voices textarea{min-height:140px;resize:vertical}#voices .row{display:flex;gap:12px;flex-wrap:wrap;align-items:center;justify-content:space-between}#voices .keep{display:flex;gap:6px;align-items:center;font-weight:400;font-size:14px;color:var(--sub)}#voices button{font:inherit;font-weight:700;background:var(--ink);color:var(--paper);border:0;border-radius:999px;padding:10px 22px;cursor:pointer}#voices button:disabled{opacity:.5}#voices .v-msg{font-size:15px;color:var(--accent);min-height:1.5em;margin:0}.v-count{font-size:13px;color:var(--sub);font-weight:400}a:focus-visible,button:focus-visible,summary:focus-visible,input:focus-visible,textarea:focus-visible{outline:3px solid var(--accent);outline-offset:3px}</style></head><body>
+#voices form{display:grid;gap:12px;margin-top:4px}#voices label{display:grid;gap:6px;font-size:15px;font-weight:600}#voices input[type=text],#voices input[type=password],#voices textarea{font:inherit;font-weight:400;padding:10px 12px;border:1px solid var(--line);border-radius:10px;background:#fff;color:var(--ink)}#voices textarea{min-height:140px;resize:vertical}#voices .row{display:flex;gap:12px;flex-wrap:wrap;align-items:center;justify-content:space-between}#voices .keep{display:flex;gap:6px;align-items:center;font-weight:400;font-size:14px;color:var(--sub)}#voices button{font:inherit;font-weight:700;background:var(--ink);color:var(--paper);border:0;border-radius:999px;padding:10px 22px;cursor:pointer}#voices button:disabled{opacity:.5}#voices .v-msg{font-size:15px;color:var(--accent);min-height:1.5em;margin:0}.v-count{font-size:13px;color:var(--sub);font-weight:400}a:focus-visible,button:focus-visible,summary:focus-visible,input:focus-visible,textarea:focus-visible{outline:3px solid var(--accent);outline-offset:3px}
+/* SNS cards: one-card gallery, with native touch scrolling. */
+.card-gallery{max-width:min(440px,54.4svh);margin:24px auto 0}
+.card-track{display:flex;overflow-x:auto;scroll-snap-type:x mandatory;overscroll-behavior-x:contain;border-radius:12px;border:1px solid var(--line);background:var(--card);scrollbar-width:thin;touch-action:pan-x pan-y pinch-zoom}
+.card-track img{display:block;flex:0 0 100%;width:100%;min-width:0;height:auto;aspect-ratio:4/5;object-fit:contain;scroll-snap-align:start;scroll-snap-stop:always}
+.gallery-controls{display:none;justify-content:space-between;align-items:center;gap:12px;margin-top:16px}
+.card-gallery.is-ready .gallery-controls{display:flex}
+.gallery-controls button{min-width:88px;min-height:44px;padding:8px 16px;border:1px solid var(--line);border-radius:999px;background:var(--card);color:var(--ink);font:inherit;font-size:15px;font-weight:700;cursor:pointer}
+.gallery-controls button[aria-disabled="true"]{opacity:.4;cursor:default}
+.gallery-count{font-size:15px;font-weight:700;color:var(--sub);font-variant-numeric:tabular-nums;white-space:nowrap}
+.gallery-help{text-align:center;font-size:14px;color:var(--sub);margin:12px 0 0}
+.card-track:focus-visible{outline:3px solid var(--accent);outline-offset:4px}
+@media(max-width:480px){.card-gallery{max-width:100%}}
+@media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}}
+</style></head><body>
 <div class="wrap"><nav class="sitebar" aria-label="사이트 메뉴"><a class="home" href="../index.html">마음 챙김 독서 토론회 · 그림책 여섯 권</a><span class="shelf"><a href="../frederick/index.html" class="on" aria-current="page">여는 책 프레드릭</a><a href="../rumphius/index.html">4월 미스 럼피우스</a><a href="../river/index.html">5월 나는 강물처럼 말해요</a><a href="../ganajittong/index.html">8월 강아지똥</a><a href="../cat/index.html">10월 100만 번 산 고양이</a><a href="../swimmy/index.html">12월 헤엄이</a></span></nav></div>
 <div class="wrap"><div class="hero"><div><div class="eyebrow">여는 책 · 그림책으로 나누는 마음 챙김</div><h1>모두가 바쁠 때,<br>나는 무엇을 모을까?</h1><p class="lead">『프레드릭』을 함께 읽고, 바쁜 일상 속에서 나를 채우는 햇살과 색깔과 이야기를 돌아봅니다.</p>
 <dl class="biblio"><dt>책</dt><dd>『프레드릭』</dd><dt>지은이</dt><dd>레오 리오니 글·그림</dd><dt>옮김</dt><dd>최순희</dd><dt>펴낸 곳</dt><dd>시공주니어, 1999 (원작 1967)</dd></dl>
@@ -211,7 +225,43 @@ footer{padding:40px 0 60px;border-top:1px solid var(--line);font-size:14px;color
 <section id="voices" data-book="frederick"><div class="wrap"><div class="eyebrow">회원 소감</div><h2>이 책을 읽고<br>남긴 우리의 소감</h2><p class="note">마음 챙김 독서 토론회 회원이 남긴 소감입니다. 이 페이지는 공개되어 있어 누구나 읽을 수 있으니, 학교·학생·동료를 알아볼 수 있는 내용은 빼고 적어 주세요.</p>
 <ul class="v-list" aria-live="polite"><li><p class="v-empty">소감을 불러오는 중…</p></li></ul>
 <details style="margin-top:22px"><summary>소감 남기기 (회원)</summary><form><label>별명<input type="text" name="name" maxlength="20" autocomplete="nickname" placeholder="모임에서 정한 별명"></label><label><span class="row"><span>소감</span><span class="v-count">0 / 1000</span></span><textarea name="text" maxlength="1000" placeholder="마음에 남은 대목, 떠오른 생각, 아직 남은 질문을 자유롭게 적어 주세요."></textarea></label><label>공통 코드<input type="password" name="code" autocomplete="off" placeholder="공지된 공통 코드 (띄어쓰기 상관없음)"></label><div class="row"><span class="keep"><input type="checkbox" name="keep" id="keep"><label for="keep" style="font-weight:400;display:inline">이 기기에 공통 코드 기억하기</label></span><button type="submit">소감 남기기</button></div><p class="v-msg" role="status"></p><p class="note" style="margin:0">별명은 이 기기에 기억됩니다. 남긴 소감을 고치거나 지우고 싶으면 대표 선생님께 알려 주세요.</p></form></details></div></section>
-<section id="cards" class="alt"><div class="wrap"><div class="eyebrow">카드뉴스</div><h2>SNS로 나누는 6장의 카드</h2><p>같은 내용을 카드 이미지로도 만들었습니다. 이미지를 길게 누르거나 오른쪽 버튼으로 저장해 나눌 수 있어요.</p>
-<div class="cards"><img src="cards/card01.png" alt="『프레드릭』 나눔 카드 1" loading="lazy"><img src="cards/card02.png" alt="『프레드릭』 나눔 카드 2" loading="lazy"><img src="cards/card03.png" alt="『프레드릭』 나눔 카드 3" loading="lazy"><img src="cards/card04.png" alt="『프레드릭』 나눔 카드 4" loading="lazy"><img src="cards/card05.png" alt="『프레드릭』 나눔 카드 5" loading="lazy"><img src="cards/card06.png" alt="『프레드릭』 나눔 카드 6" loading="lazy"></div></div></section>
+<section id="cards" class="alt"><div class="wrap"><div class="eyebrow">카드뉴스</div><h2>SNS로 나누는 6장의 카드</h2><p>같은 내용을 카드 이미지로도 만들었습니다. 한 장씩 넘기며 읽고 나눠 보세요.</p>
+<div class="card-gallery" role="region" aria-roledescription="이미지 갤러리" aria-label="프레드릭 SNS 카드 6장">
+<div class="card-track" id="sns-card-track" tabindex="0" aria-label="카드 이미지, 좌우 방향키로 넘기기"><img src="cards/card01.png" alt="『프레드릭』 나눔 카드 1, 전체 6장" width="1080" height="1350" loading="lazy" draggable="false"><img src="cards/card02.png" alt="『프레드릭』 나눔 카드 2, 전체 6장" width="1080" height="1350" loading="lazy" draggable="false"><img src="cards/card03.png" alt="『프레드릭』 나눔 카드 3, 전체 6장" width="1080" height="1350" loading="lazy" draggable="false"><img src="cards/card04.png" alt="『프레드릭』 나눔 카드 4, 전체 6장" width="1080" height="1350" loading="lazy" draggable="false"><img src="cards/card05.png" alt="『프레드릭』 나눔 카드 5, 전체 6장" width="1080" height="1350" loading="lazy" draggable="false"><img src="cards/card06.png" alt="『프레드릭』 나눔 카드 6, 전체 6장" width="1080" height="1350" loading="lazy" draggable="false"></div>
+<div class="gallery-controls"><button type="button" class="gallery-prev" aria-label="이전 카드" aria-controls="sns-card-track" aria-disabled="true">← 이전</button><span class="gallery-count" role="status" aria-live="polite" aria-atomic="true">1 / 6</span><button type="button" class="gallery-next" aria-label="다음 카드" aria-controls="sns-card-track" aria-disabled="false">다음 →</button></div>
+<p class="gallery-help">좌우로 넘겨 보세요. 이미지는 길게 누르거나 오른쪽 버튼으로 저장할 수 있어요.</p></div></div></section>
 <div class="wrap"><nav class="pager" aria-label="이전·다음 책"><span></span><a class="next" href="../rumphius/index.html"><small>다음 책 · 4월</small>『미스 럼피우스』</a></nav></div>
-<footer><div class="wrap"><p><b>마음 챙김 독서 토론회</b> · 2026 교직원 독서토론 동아리 그림책 나눔 자료</p><p>도서: 레오 리오니 글·그림 · 최순희 옮김 · 시공주니어, 1999.</p><p>줄거리 참고: <a href="https://product.kyobobook.co.kr/detail/S000000727938">교보문고 『프레드릭』 책 소개(시공주니어, 1999)</a>, <a href="https://product.kyobobook.co.kr/detail/S000000735159">교보문고 『프레드릭』 한국어판 20주년 특별 에디션 책 소개</a>, <a href="http://gaonbit.kr/prize/caldecott-books/10711">가온빛 「칼데콧상 수상작: 프레드릭」(1968)</a>. 따옴표 속 문장은 출판사 책 소개와 서평에 실린 한국어판 문장을 짧게 옮긴 것입니다.</p><p>삽화는 이 자료를 위해 새로 그린 것으로, 원작 그림책의 그림이 아닙니다.</p></div></footer><script src="../comments.js" defer></script></body></html>
+<footer><div class="wrap"><p><b>마음 챙김 독서 토론회</b> · 2026 교직원 독서토론 동아리 그림책 나눔 자료</p><p>도서: 레오 리오니 글·그림 · 최순희 옮김 · 시공주니어, 1999.</p><p>줄거리 참고: <a href="https://product.kyobobook.co.kr/detail/S000000727938">교보문고 『프레드릭』 책 소개(시공주니어, 1999)</a>, <a href="https://product.kyobobook.co.kr/detail/S000000735159">교보문고 『프레드릭』 한국어판 20주년 특별 에디션 책 소개</a>, <a href="http://gaonbit.kr/prize/caldecott-books/10711">가온빛 「칼데콧상 수상작: 프레드릭」(1968)</a>. 따옴표 속 문장은 출판사 책 소개와 서평에 실린 한국어판 문장을 짧게 옮긴 것입니다.</p><p>삽화는 이 자료를 위해 새로 그린 것으로, 원작 그림책의 그림이 아닙니다.</p></div></footer><script src="../comments.js" defer></script><script>
+(()=>{
+ const gallery=document.querySelector('.card-gallery');
+ if(!gallery)return;
+ const track=gallery.querySelector('.card-track');
+ const slides=Array.from(track.querySelectorAll('img'));
+ const prev=gallery.querySelector('.gallery-prev');
+ const next=gallery.querySelector('.gallery-next');
+ const count=gallery.querySelector('.gallery-count');
+ const reduced=window.matchMedia('(prefers-reduced-motion: reduce)');
+ let current=0,frame=0;
+ const update=()=>{
+  frame=0;
+  const index=Math.max(0,Math.min(slides.length-1,Math.round(track.scrollLeft/track.clientWidth)));
+  if(index!==current){current=index;count.textContent=(index+1)+' / '+slides.length;}
+  prev.setAttribute('aria-disabled',String(index===0));
+  next.setAttribute('aria-disabled',String(index===slides.length-1));
+ };
+ const go=(index)=>{
+  const target=Math.max(0,Math.min(slides.length-1,index));
+  track.scrollTo({left:target*track.clientWidth,behavior:reduced.matches?'instant':'smooth'});
+ };
+ prev.addEventListener('click',()=>{if(prev.getAttribute('aria-disabled')!=='true')go(current-1);});
+ next.addEventListener('click',()=>{if(next.getAttribute('aria-disabled')!=='true')go(current+1);});
+ track.addEventListener('scroll',()=>{if(!frame)frame=requestAnimationFrame(update);},{passive:true});
+ track.addEventListener('keydown',event=>{
+  if(!['ArrowLeft','ArrowRight','Home','End'].includes(event.key))return;
+  event.preventDefault();
+  go(event.key==='Home'?0:event.key==='End'?slides.length-1:current+(event.key==='ArrowRight'?1:-1));
+ });
+ new ResizeObserver(()=>track.scrollTo({left:current*track.clientWidth,behavior:'instant'})).observe(track);
+ gallery.classList.add('is-ready');update();
+})();
+</script></body></html>
