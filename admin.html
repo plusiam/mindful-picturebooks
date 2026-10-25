@@ -10,7 +10,7 @@ input{font:inherit;padding:10px 12px;border:1px solid var(--line);border-radius:
 <section class="box" id="login"><h2>관리자 확인</h2><form class="row" id="loginForm"><input type="password" id="pw" placeholder="관리자 비밀번호" autocomplete="current-password"><button type="submit">들어가기</button></form><p class="msg" id="loginMsg" role="status"></p><p class="note">관리자 비밀번호는 소감 구글 시트의 「설정」 탭 B2 칸에 있습니다.</p></section>
 <div id="panel" hidden>
 <section class="box"><h2>공통 코드</h2><div>지금 코드: <span class="cur" id="cur"></span></div>
-<form class="row" id="codeForm" style="margin-top:12px"><input type="text" id="newCode" maxlength="30" placeholder="새 공통 코드 (예: 마음그림책)"><button type="submit">바꾸기</button></form>
+<form class="row" id="codeForm" style="margin-top:12px"><input type="text" id="newCode" maxlength="30" placeholder="새 공통 코드 (예: 4자리 숫자)"><button type="submit">바꾸기</button></form>
 <div class="row" style="margin-top:10px"><button class="ghost" type="button" id="copyMsg">공지 문구 복사</button></div>
 <p class="note" style="margin:8px 0 0">코드를 바꾸면 예전 코드로는 소감을 남길 수 없습니다. 이미 남긴 소감은 그대로입니다. 틀린 코드가 10분 안에 10번 들어오면 10분 동안 입력이 멈추는데, 여기서 코드를 다시 저장하면 바로 풀립니다.</p><p class="msg" id="codeMsg" role="status"></p></section>
 <section class="box"><div class="row" style="justify-content:space-between"><h2 style="margin:0">최근 소감</h2><span class="row"><button class="ghost" type="button" id="reload">새로고침</button><button class="ghost" type="button" id="logout">나가기</button></span></div>
